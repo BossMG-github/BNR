@@ -4,6 +4,15 @@ fun main(args: Array<String>) {
     val name = "마드리갈"
     var healthPoints = 89
     val isBlessed = true
+    val isImmortal = false
+
+    //아우라
+    if (isBlessed && healthPoints > 50 || isImmortal) {
+        println("GREEN")
+    } else {
+        println("NONE")
+    }
+
     if (healthPoints == 100) {
         println(name + " 최상의 상태임!")
     } else if (healthPoints >= 90) {
@@ -19,4 +28,5 @@ fun main(args: Array<String>) {
     } else {
         println(name + " 최악의 상태임!")
     }
+
 }
