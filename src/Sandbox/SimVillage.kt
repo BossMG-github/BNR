@@ -11,11 +11,10 @@ fun runSimulation(){
     val greetingFunction = configureGreetingFunction()
     println(greetingFunction("김선달"))
     println(greetingFunction("코틀린"))
-
 }
 
 fun configureGreetingFunction(): (String) -> String {
-    val structureType = "병원"
+    var structureType = "병원"
     var numBuildings = 5
     return { playerName : String ->
         val currentYear = 2019
