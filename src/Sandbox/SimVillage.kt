@@ -14,7 +14,7 @@ fun runSimulation(){
 }
 
 fun configureGreetingFunction(): (String) -> String {
-    var structureType = "병원"
+    val structureType = "병원"
     var numBuildings = 5
     return { playerName : String ->
         val currentYear = 2019
