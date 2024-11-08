@@ -8,7 +8,7 @@ fun main(args: Array<String>) {
     }
 }
 
-fun runSimulation(playerName: String, greetingFunction: (String, Int) -> String) {
+inline fun runSimulation(playerName: String, greetingFunction: (String, Int) -> String) {
     val numBuildings = (1..3).shuffled().last() // 1,2,3 중 하나를 무작위로 선택한다
     println(greetingFunction(playerName, numBuildings))
 }
