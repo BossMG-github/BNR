@@ -7,5 +7,10 @@ fun main(args: Array<String>) {
         "SimVillage 방문을 환영합니다, $playerName! (copyright $currentYear)"
     }
 
-    println(greetingFunction("김선달",2))
+    runSimulation("김선달", greetingFunction)
+}
+
+fun runSimulation(playerName: String, greetingFunction: (String, Int) -> String) {
+    val numBuildings = (1..3).shuffled().last() // 1,2,3 중 하나를 무작위로 선택한다
+    println(greetingFunction(playerName, numBuildings))
 }
