@@ -1,4 +1,5 @@
 package NyetHack
+import kotlin.math.roundToInt
 
 const val TAVERN_NAME = "Taernyl's Folly"
 
@@ -11,7 +12,22 @@ fun main(args: Array<String>) {
 
 fun performPurchase(price: Double){
     displayBalance()
-    println("금화 $price 로 술을 구압함")
+    val totalPurse = playerGold + (playerSilver / 100.0)
+    println("지갑 전체 금액: 금화 $totalPurse")
+    if(price <= totalPurse){
+        println("금화 $price 로 술을 구압함")
+        val remainingBalance = totalPurse - price
+        println("남은 잔액: ${"%.2f".format(remainingBalance)}")
+
+        val remainingGold = remainingBalance.toInt()
+        val remainingSilver = (remainingBalance % 1 * 100).roundToInt()
+        playerGold = remainingGold
+        playerSilver = remainingSilver
+        displayBalance()
+    } else {
+        println("[바텐더]: 금화: ${(price-totalPurse).roundToInt()}가 부족합니다.")
+    }
+
 }
 
 private fun displayBalance(){
@@ -36,6 +52,8 @@ private fun placeOrder(menuData: String){
     }
 
     println(phrase)
+    performPurchase(price.toDouble())
+
 }
 
 private fun toDragonSpeak(phrase: String) =
