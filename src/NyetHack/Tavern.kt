@@ -52,8 +52,6 @@ private fun placeOrder(menuData: String){
     }
 
     println(phrase)
-    performPurchase(price.toDouble())
-
 }
 
 private fun toDragonSpeak(phrase: String) =
