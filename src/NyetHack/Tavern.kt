@@ -11,6 +11,7 @@ val patronList = mutableListOf("Eli", "Mordoc", "Sophie")
 val lastName = listOf("Ironfoot", "Farnsworth", "Baggins")
 val uniquePatrons = mutableSetOf<String>()
 val menuList = File("C:\\study\\kotlin\\BNR\\src\\NyetHack\\data\\tavern-menu-items.txt").readText().split("\r\n")
+val patronGold = mapOf("Eli" to 10.5, "Mordoc" to 8.0, "Sophie" to 5.5)
 
 fun main(args: Array<String>) {
 
@@ -39,6 +40,8 @@ fun main(args: Array<String>) {
         placeOrder(uniquePatrons.shuffled().first(), menuList.shuffled().first())
         orderCount++
     }
+
+    println(patronGold)
 }
 
 fun performPurchase(price: Double) {
