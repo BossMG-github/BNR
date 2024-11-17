@@ -6,13 +6,16 @@ fun main(args: Array<String>) {
     val isBlessed = true
     val isImmortal = false
 
+    val player = Player()
+    player.castFireball()
+
     //아우라
     val auraColor = auraColor(isBlessed, healthPoints, isImmortal)
     val healthStatus = formatHealthStatus(healthPoints, isBlessed)
 
     // 플레이어의 상태 출력
     printPlayerStatus(auraColor, isBlessed, name, healthStatus)
-    castFireball()
+
 
     performCombat()
     performCombat("ulrich")
@@ -58,9 +61,6 @@ private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean) = when (he
     else -> " 최악의 상태임!"
 }
 
-
-private fun castFireball(numFireballs: Int = 2) =
-    println("한 덩어리의 파이어볼이 나타난다. (x$numFireballs)")
 
 fun performCombat() {
     println("적군이 없다!")
