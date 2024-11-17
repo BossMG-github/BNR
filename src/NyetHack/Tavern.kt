@@ -45,6 +45,21 @@ fun main(args: Array<String>) {
     displayPatronBalances()
 }
 
+// 술집 문지기
+private fun gatekeeper(){
+    val patronsToRemove = mutableListOf<String>()
+    patronGold.forEach { (patron, balance) ->
+        if(balance < 1.22) {
+            println("$patron 은 금화가 부족하여 술집에서 쫓겨납니다!")
+            patronsToRemove += patron
+        }
+    }
+    patronsToRemove.forEach {
+        uniquePatrons.remove(it)
+        patronGold.remove(it)
+    }
+}
+
 private fun displayPatronBalances(){
     patronGold.forEach { (patron, balance) ->
         println("$patron, balance: ${"%.2f".format(balance)}")
