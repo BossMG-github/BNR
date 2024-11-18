@@ -1,19 +1,15 @@
 package NyetHack
 
 fun main(args: Array<String>) {
-    var healthPoints = 89
-    val isBlessed = true
-    val isImmortal = false
-
     val player = Player()
     player.castFireball()
 
-    //아우라
+    /*//아우라
     val auraColor = auraColor(isBlessed, healthPoints, isImmortal)
     val healthStatus = formatHealthStatus(healthPoints, isBlessed)
-
+*/
     // 플레이어의 상태 출력
-    printPlayerStatus(auraColor, isBlessed, player.name, healthStatus)
+    printPlayerStatus(player)
 
 
     performCombat()
@@ -21,26 +17,21 @@ fun main(args: Array<String>) {
     performCombat("Hildr", true)
 }
 
-private fun printPlayerStatus(
-    auraColor: String,
-    isBlessed: Boolean,
-    name: String,
-    healthStatus: String
-) {
+private fun printPlayerStatus(player: Player) {
     println(
-        "(Aura: $auraColor) " +
+        "(Aura: ${player.auraColor()}) " +
                 "(Blessed: ${
-                    if (isBlessed) {
+                    if (player.isBlessed) {
                         "YES"
                     } else {
                         "NO"
                     }
                 })"
     )
-    println("$name $healthStatus")
+    println("${player.name} ${player.formatHealthStatus()}")
 }
 
-private fun auraColor(
+/*private fun auraColor(
     isBlessed: Boolean,
     healthPoints: Int,
     isImmortal: Boolean
@@ -58,7 +49,7 @@ private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean) = when (he
 
     in 15..74 -> " 많이 다친 것 같음."
     else -> " 최악의 상태임!"
-}
+}*/
 
 
 fun performCombat() {
