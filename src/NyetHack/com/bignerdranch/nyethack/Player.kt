@@ -1,4 +1,4 @@
-package NyetHack
+package NyetHack.com.bignerdranch.nyethack
 
 
 class Player {

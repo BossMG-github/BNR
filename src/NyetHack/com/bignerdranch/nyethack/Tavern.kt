@@ -1,6 +1,5 @@
-package NyetHack
+package NyetHack.com.bignerdranch.nyethack
 
-import kotlin.math.roundToInt
 import java.io.File
 
 const val TAVERN_NAME = "Taernyl's Folly"
