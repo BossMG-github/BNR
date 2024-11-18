@@ -1,7 +1,6 @@
 package NyetHack
 
 fun main(args: Array<String>) {
-    val name = "마드리갈"
     var healthPoints = 89
     val isBlessed = true
     val isImmortal = false
@@ -14,7 +13,7 @@ fun main(args: Array<String>) {
     val healthStatus = formatHealthStatus(healthPoints, isBlessed)
 
     // 플레이어의 상태 출력
-    printPlayerStatus(auraColor, isBlessed, name, healthStatus)
+    printPlayerStatus(auraColor, isBlessed, player.name, healthStatus)
 
 
     performCombat()
