@@ -17,7 +17,6 @@ class Player(
 
     val hometown = selectHometown()
 
-
     init {
         require(healthPoints > 0) { "healthPoints는 0보다 커야 합니다."}
         require(name.isNotBlank()) {"플레이어는 이름이 있어야 합니다."}
