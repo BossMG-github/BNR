@@ -1,6 +1,7 @@
 package NyetHack.com.bignerdranch.nyethack
 
 import java.io.File
+import java.util.*
 
 class Player(
     _name: String,
@@ -9,7 +10,7 @@ class Player(
     private val isImmortal: Boolean ) {
 
     var name = _name
-        get() = "{${field.capitalize()}} of $hometown"
+        get() = "${field.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }} of $hometown"
         private set(value) {
             field = value.trim()
         }
@@ -25,11 +26,11 @@ class Player(
     constructor(name: String) : this(name,
         isBlessed = true,
         isImmortal = false) {
-         if (name.toLowerCase() == "kar") healthPoints = 40
+         if (name.lowercase(Locale.getDefault()) == "kar") healthPoints = 40
     }
 
     private fun selectHometown() =
-        File("data/towns.txt").readText().split("\r\n").shuffled().first()
+        File("C:\\study\\kotlin\\BNR\\src\\NyetHack\\data\\towns.txt").readText().split("\r\n").shuffled().first()
 
     fun auraColor(): String {
         val auraVisible = isBlessed && healthPoints > 50 || isImmortal
