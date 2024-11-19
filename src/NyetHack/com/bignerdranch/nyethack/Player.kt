@@ -29,7 +29,7 @@ class Player(
     }
 
     private fun selectHometown() =
-        File("C:\\study\\kotlin\\BNR\\src\\NyetHack\\data\\towns.txt").readText().split("\r\n").shuffled().first()
+        File("src/NyetHack/data/towns.txt").readText().split("\r\n").shuffled().first()
 
     fun auraColor(): String {
         val auraVisible = isBlessed && healthPoints > 50 || isImmortal
