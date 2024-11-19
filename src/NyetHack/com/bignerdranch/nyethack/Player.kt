@@ -3,7 +3,7 @@ package NyetHack.com.bignerdranch.nyethack
 
 class Player(
     _name: String,
-    var healthPoints: Int,
+    var healthPoints: Int = 100,
     val isBlessed: Boolean,
     private val isImmortal: Boolean ) {
 
@@ -12,6 +12,12 @@ class Player(
         private set(value) {
             field = value.trim()
         }
+
+    constructor(name: String) : this(name,
+        isBlessed = true,
+        isImmortal = false) {
+         if (name.toLowerCase() == "kar") healthPoints = 40
+    }
 
 
     fun auraColor(): String {
