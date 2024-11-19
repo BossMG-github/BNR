@@ -1,16 +1,21 @@
 package NyetHack.com.bignerdranch.nyethack
 
 
-class Player {
-    var name = "madrigal"
+class Player(
+    _name: String,
+    _healthPoints: Int,
+    _isBlessed: Boolean,
+    _isImmortal: Boolean,
+) {
+    var name = _name
         get() = field.capitalize()
         private set(value) {
             field = value.trim()
         }
 
-    var healthPoints = 89
-    val isBlessed = true
-    private val isImmortal = false // 해당 클래스에서만 사용함.
+    var healthPoints = _healthPoints
+    val isBlessed = _isBlessed
+    private val isImmortal = _isImmortal // 해당 클래스에서만 사용함.
 
     fun auraColor(): String {
         val auraVisible = isBlessed && healthPoints > 50 || isImmortal
@@ -22,11 +27,12 @@ class Player {
         when (healthPoints) {
             100 -> "최상의 상태임!"
             in 90..99 -> "약간의 찰과상만 있음."
-            in 75..89 -> if( isBlessed) {
+            in 75..89 -> if (isBlessed) {
                 "경미한 상처가 있지만 빨리 치유되고 있음!"
             } else {
                 "경미한 상처만 있음."
             }
+
             in 15..74 -> "많이 다친 것 같음."
             else -> "최악의 상태임!"
         }
