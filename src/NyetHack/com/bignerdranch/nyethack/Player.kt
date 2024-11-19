@@ -1,5 +1,6 @@
 package NyetHack.com.bignerdranch.nyethack
 
+import java.io.File
 
 class Player(
     _name: String,
@@ -8,10 +9,13 @@ class Player(
     private val isImmortal: Boolean ) {
 
     var name = _name
-        get() = field.capitalize()
+        get() = "{${field.capitalize()}} of $hometown"
         private set(value) {
             field = value.trim()
         }
+
+    val hometown = selectHometown()
+
 
     init {
         require(healthPoints > 0) { "healthPoints는 0보다 커야 합니다."}
@@ -24,6 +28,8 @@ class Player(
          if (name.toLowerCase() == "kar") healthPoints = 40
     }
 
+    private fun selectHometown() =
+        File("data/towns.txt").readText().split("\r\n").shuffled().first()
 
     fun auraColor(): String {
         val auraVisible = isBlessed && healthPoints > 50 || isImmortal
