@@ -15,7 +15,7 @@ class Player(
             field = value.trim()
         }
 
-    val hometown = selectHometown()
+    val hometown by lazy { selectHometown() }
 
     init {
         require(healthPoints > 0) { "healthPoints는 0보다 커야 합니다."}
