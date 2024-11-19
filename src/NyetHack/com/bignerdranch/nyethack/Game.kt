@@ -11,7 +11,6 @@ fun main(args: Array<String>) {
     // 플레이어의 상태 출력
     printPlayerStatus(player)
 
-
     performCombat()
     performCombat("ulrich")
     performCombat("Hildr", true)
