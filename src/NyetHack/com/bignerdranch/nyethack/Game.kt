@@ -8,7 +8,7 @@ fun main(args: Array<String>) {
     val auraColor = auraColor(isBlessed, healthPoints, isImmortal)
     val healthStatus = formatHealthStatus(healthPoints, isBlessed)
 */
-    var currentRoom = Room("Foyer")
+    var currentRoom: Room = TownSquare()
     println(currentRoom.description())
     println(currentRoom.load())
 
