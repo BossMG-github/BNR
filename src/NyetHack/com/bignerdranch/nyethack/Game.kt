@@ -1,5 +1,8 @@
 package NyetHack.com.bignerdranch.nyethack
 
+import java.nio.file.Files.move
+import java.util.*
+
 fun main(args: Array<String>) {
     /*performCombat()
     performCombat("ulrich")
@@ -66,7 +69,7 @@ object Game{
             printPlayerStatus(player)
 
             print("> 명령을 입력하세요: ")
-            println("최근 명령: ${readLine()}")
+            println(GameInput(readLine()).processCommand())
         }
     }
 
@@ -82,5 +85,17 @@ object Game{
                     })"
         )
         println("${player.name} ${player.formatHealthStatus()}")
+    }
+
+    private class GameInput(arg : String?) {
+        private val input = arg ?: ""
+        val command = input.split(" ")[0] // split으로 반환된 리스트에서 인덱스 0 값을 대입. 즉, 사용자 입력 명령을 대입
+        val argument = input.split(" ").getOrElse(1) {""}
+
+        private fun commandNotFound() = "적합하지 않은 명령입니다!"
+
+        fun processCommand() = when (command.lowercase(Locale.getDefault())) {
+            else -> commandNotFound()
+        }
     }
 }
