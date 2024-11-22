@@ -16,6 +16,7 @@ class Player(
         }
 
     val hometown by lazy { selectHometown() }
+    var currentPosition = Coordinate(0, 0)
 
     init {
         require(healthPoints > 0) { "healthPoints는 0보다 커야 합니다."}
