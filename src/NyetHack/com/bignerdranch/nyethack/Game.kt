@@ -2,6 +2,7 @@ package NyetHack.com.bignerdranch.nyethack
 
 import java.nio.file.Files.move
 import java.util.*
+import kotlin.system.exitProcess
 
 fun main(args: Array<String>) {
     /*performCombat()
@@ -78,6 +79,10 @@ object Game{
             println(GameInput(readLine()).processCommand())
         }
     }
+    private fun gameQuit(): Nothing {
+        println("수고하셨습니다! 게임을 종료합니다.")
+        exitProcess(0)
+    }
 
     private fun move(directionInput: String) =
         try{
@@ -118,6 +123,8 @@ object Game{
 
         fun processCommand() = when (command.lowercase(Locale.getDefault())) {
             "move" -> move(argument)
+            "quit" -> gameQuit()
+            "exit" -> gameQuit()
             else -> commandNotFound()
         }
     }
