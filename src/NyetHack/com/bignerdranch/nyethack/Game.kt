@@ -54,6 +54,12 @@ object Game{
     private val player = Player("Madrigal")
     private var currentRoom: Room = TownSquare()
 
+    // 격자 형태의 공간
+    private var worldMap = listOf(
+            listOf(currentRoom, Room("Tavern"), Room("Back Room")),
+        listOf(Room("Long Corridor"), Room("Generic Room")))
+
+
     init {
         println("방문을 환영합니다.")
         player.castFireball()
@@ -72,6 +78,22 @@ object Game{
             println(GameInput(readLine()).processCommand())
         }
     }
+
+    private fun move(directionInput: String) =
+        try{
+            val direction = Direction.valueOf(directionInput.uppercase(Locale.getDefault()))
+            val newPosition = direction.updateCoordinate(player.currentPosition)
+            if(!newPosition.isInBounds) {
+                throw IllegalStateException("$direction 쪽 방향이 범위를 벗어남.")
+            }
+
+            val newRoom = worldMap[newPosition.y][newPosition.x]
+            player.currentPosition = newPosition
+            currentRoom = newRoom
+            "Ok, $direction 방향의 ${newRoom.name}로 이동했습니다."
+        } catch (e: Exception) {
+            "잘못된 방향임: $directionInput"
+        }
 
     private fun printPlayerStatus(player: Player) {
         println(
@@ -95,7 +117,9 @@ object Game{
         private fun commandNotFound() = "적합하지 않은 명령입니다!"
 
         fun processCommand() = when (command.lowercase(Locale.getDefault())) {
+            "move" -> move(argument)
             else -> commandNotFound()
         }
     }
+
 }
