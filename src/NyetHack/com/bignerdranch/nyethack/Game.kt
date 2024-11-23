@@ -84,6 +84,26 @@ object Game{
         exitProcess(0)
     }
 
+    private fun map(): String{
+        /*var result = ""
+        for(y in worldMap.indices) {
+            for(x in worldMap[y].indices) {
+                if(player.currentPosition.x == x && player.currentPosition.y == y) {
+                    result += "X "
+                } else {
+                    result += "O "
+                }
+            }
+            result += "\n"
+        }
+        return result*/
+        return worldMap.mapIndexed { y, row ->
+            row.mapIndexed { x, _ ->
+                if (player.currentPosition.x == x && player.currentPosition.y == y) "X" else "O"
+            }.joinToString(" ")
+        }.joinToString("\n")
+    }
+
     private fun move(directionInput: String) =
         try{
             val direction = Direction.valueOf(directionInput.uppercase(Locale.getDefault()))
@@ -124,6 +144,8 @@ object Game{
         fun processCommand() = when (command.lowercase(Locale.getDefault())) {
             "move" -> move(argument)
             "quit", "exit" -> gameQuit()
+            "map" -> map()
+            "ring" -> TownSquare().ringBell()
             else -> commandNotFound()
         }
     }
