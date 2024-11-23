@@ -123,8 +123,7 @@ object Game{
 
         fun processCommand() = when (command.lowercase(Locale.getDefault())) {
             "move" -> move(argument)
-            "quit" -> gameQuit()
-            "exit" -> gameQuit()
+            "quit", "exit" -> gameQuit()
             else -> commandNotFound()
         }
     }
