@@ -145,7 +145,7 @@ object Game{
             "move" -> move(argument)
             "quit", "exit" -> gameQuit()
             "map" -> map()
-            "ring" -> TownSquare().ringBell()
+            "ring" -> if(currentRoom is TownSquare) (currentRoom as TownSquare).ringBell() else "현재 방에서는 종을 칠 수 없습니다."
             else -> commandNotFound()
         }
     }
