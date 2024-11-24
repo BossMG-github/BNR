@@ -5,9 +5,9 @@ import java.util.*
 
 class Player(
     _name: String,
-    var healthPoints: Int = 100,
+    override var healthPoints: Int = 100,
     val isBlessed: Boolean,
-    private val isImmortal: Boolean ) {
+    private val isImmortal: Boolean ): Fightable {
 
     var name = _name
         get() = "${field.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }} of $hometown"
@@ -55,4 +55,15 @@ class Player(
     fun castFireball(numFireballs: Int = 2) =
         println("한 덩어리의 파이어볼이 나타난다. (x$numFireballs)")
 
+    override val diceCount = 3
+    override val diceSides = 6
+    override fun attack(opponent: Fightable): Int {
+        val damageDealt = if (isBlessed) {
+            damageRoll * 2
+        } else {
+            damageRoll
+        }
+        opponent.healthPoints -= damageDealt
+        return damageDealt
+    }
 }
