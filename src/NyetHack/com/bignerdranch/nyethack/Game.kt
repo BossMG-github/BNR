@@ -1,5 +1,6 @@
 package NyetHack.com.bignerdranch.nyethack
 
+import NyetHack.com.bignerdranch.nyethack.extensions.frame
 import java.nio.file.Files.move
 import java.util.*
 import kotlin.system.exitProcess
@@ -62,7 +63,7 @@ object Game{
 
 
     init {
-        println("방문을 환영합니다.")
+        println("Welcome, ${player.name}".frame(5))
         player.castFireball()
     }
 
