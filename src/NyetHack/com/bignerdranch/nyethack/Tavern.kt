@@ -1,6 +1,7 @@
 package NyetHack.com.bignerdranch.nyethack
 
 import java.io.File
+import NyetHack.com.bignerdranch.nyethack.extensions.random
 
 const val TAVERN_NAME = "Taernyl's Folly"
 
@@ -9,8 +10,6 @@ val lastName = listOf("Ironfoot", "Farnsworth", "Baggins")
 val uniquePatrons = mutableSetOf<String>()
 val menuList = File("C:\\study\\kotlin\\BNR\\src\\NyetHack\\data\\tavern-menu-items.txt").readText().split("\r\n")
 val patronGold = mutableMapOf<String, Double>()
-
-private fun <T> Iterable<T>.random() : T = this.shuffled().first()
 
 fun main(args: Array<String>) {
 
