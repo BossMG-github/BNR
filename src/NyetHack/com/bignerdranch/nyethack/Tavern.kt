@@ -10,6 +10,8 @@ val uniquePatrons = mutableSetOf<String>()
 val menuList = File("C:\\study\\kotlin\\BNR\\src\\NyetHack\\data\\tavern-menu-items.txt").readText().split("\r\n")
 val patronGold = mutableMapOf<String, Double>()
 
+private fun <T> Iterable<T>.random() : T = this.shuffled().first()
+
 fun main(args: Array<String>) {
 
     if (patronList.contains("Eli")) {
@@ -25,8 +27,8 @@ fun main(args: Array<String>) {
     }
 
     (0..9).forEach { // 범위는 Iterable타입이라서 forEach 사용 가능
-        val first = patronList.shuffled().first()
-        val last = lastName.shuffled().first()
+        val first = patronList.random()
+        val last = lastName.random()
         val name = "$first $last"
         uniquePatrons += name
     }
@@ -37,7 +39,7 @@ fun main(args: Array<String>) {
 
     var orderCount = 0
     while (orderCount <= 9) {
-        placeOrder(uniquePatrons.shuffled().first(), menuList.shuffled().first())
+        placeOrder(uniquePatrons.random(), menuList.random())
         orderCount++
     }
 
