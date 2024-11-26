@@ -2,7 +2,7 @@ package NyetHack.com.bignerdranch.nyethack
 
 import java.io.File
 import java.util.*
-import NyetHack.com.bignerdranch.nyethack.extensions.random
+import NyetHack.com.bignerdranch.nyethack.extensions.random as randomizer
 
 class Player(
     _name: String,
@@ -31,7 +31,7 @@ class Player(
     }
 
     private fun selectHometown() =
-        File("src/NyetHack/data/towns.txt").readText().split("\r\n").random()
+        File("src/NyetHack/data/towns.txt").readText().split("\r\n").randomizer()
 
     fun auraColor(): String {
         val auraVisible = isBlessed && healthPoints > 50 || isImmortal
