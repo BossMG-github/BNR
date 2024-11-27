@@ -1,5 +1,7 @@
 package Sandbox
 
+import kotlin.system.measureNanoTime
+
 fun main() {
 
 //    ----------------------- 변환 --------------------------
@@ -33,4 +35,30 @@ fun main() {
         // 3 + (2 * 3) 이런식으로.
     }
     println("Final value: $foldedValue")
+
+
+    val listInNanos = measureNanoTime {
+        // List를 사용하는 함수형 연쇄 호출 코드
+        val toList = (1..7919).toList().filter { it.isPrime() }.take(1000)
+    }
+
+    val sequenceInNanos = measureNanoTime {
+        // Sequence를 사용하는 함수형 연쇄 호출 코드
+        val oneThousandPrimes = generateSequence(3) { value ->
+            value + 1
+        }.filter { it.isPrime() }.take(1000)
+    }
+
+    println("List 작업 완료 소요 시간: ${listInNanos/1000000000.0}")
+    println("Sequence 작업 완료 소요 시간: ${sequenceInNanos/1000000000.0}")
+    // 시퀀스가 약5배 빠르게 나옴.
+}
+
+fun Int.isPrime(): Boolean {
+    (2 until this).map{
+        if(this%it==0) {
+            return false // 소수가 아니다!
+        }
+    }
+    return true
 }
