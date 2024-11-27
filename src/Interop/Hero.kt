@@ -1,3 +1,4 @@
+@file:JvmName("Hero")
 package Interop
 
 // NyetHack 왕국의 용사를 나타내는 파일
@@ -15,4 +16,13 @@ fun main() {
 
     adversary.greeting = "안녕하세요, 용사시여."
     println(adversary.utterGreeting())
+
+    adversary.offerFood()
+}
+
+fun makeProclamation() = "안녕, 괴물아!"
+
+@JvmOverloads
+fun handOverFood(leftHand: String = "딸기", rightHand: String = "고기") {
+    println("맛있는 $leftHand 와 $rightHand 를 넘겨주었습니다.")
 }

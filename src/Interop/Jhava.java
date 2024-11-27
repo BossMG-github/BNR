@@ -31,4 +31,11 @@ public class Jhava {
         this.greeting = greeting;
     }
 
+    public void offerFood() {
+        Hero.handOverFood("피자");
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Hero.makeProclamation());
+    }
 }
