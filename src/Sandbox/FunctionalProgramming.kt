@@ -52,7 +52,12 @@ fun main() {
     println("List 작업 완료 소요 시간: ${listInNanos/1000000000.0}")
     println("Sequence 작업 완료 소요 시간: ${sequenceInNanos/1000000000.0}")
     // 시퀀스가 약5배 빠르게 나옴.
+
+    val gradesByStudent = mapOf("Josh" to 4.0, "Alex" to 2.0, "Jane" to 3.0)
+    println(flipValues(gradesByStudent))
 }
+
+fun flipValues(change: Map<String,Double>) = change.map { it.value to it.key}.toMap()
 
 fun Int.isPrime(): Boolean {
     (2 until this).map{
