@@ -7,10 +7,15 @@ const val TAVERN_NAME = "Taernyl's Folly"
 
 val patronList = mutableListOf("Eli", "Mordoc", "Sophie")
 val lastName = listOf("Ironfoot", "Farnsworth", "Baggins")
-val uniquePatrons = mutableSetOf<String>()
+//val uniquePatrons = mutableSetOf<String>()
+val uniquePatrons: Set<String> = generateSequence{
+    val first = patronList.random()
+    val last = lastName.random()
+    "$first $last"
+}.distinct().take(9).toSet()
 val menuList = File("C:\\study\\kotlin\\BNR\\src\\NyetHack\\data\\tavern-menu-items.txt").readText().split("\r\n")
-val patronGold = mutableMapOf<String, Double>()
-
+//val patronGold = mutableMapOf<String, Double>()
+val patronGold = uniquePatrons.map { it to 6.0 }.toMap().toMutableMap()
 fun main(args: Array<String>) {
 
     if (patronList.contains("Eli")) {
@@ -25,18 +30,20 @@ fun main(args: Array<String>) {
         println("술집 주인이 말한다: 아니오, 나간 사람도 있습니다.")
     }
 
-    (0..9).forEach { // 범위는 Iterable타입이라서 forEach 사용 가능
+/*    (0..9).forEach { // 범위는 Iterable타입이라서 forEach 사용 가능
         val first = patronList.random()
         val last = lastName.random()
         val name = "$first $last"
         uniquePatrons += name
-    }
+    }*/
 
+    /*
     uniquePatrons.forEach {
         patronGold[it] = 6.0
     }
+    */
 
-    var orderCount = 0
+    var orderCount = 1
     while (orderCount <= 9) {
         placeOrder(uniquePatrons.random(), menuList.random())
         orderCount++
@@ -54,10 +61,10 @@ private fun gatekeeper(){
             patronsToRemove += patron
         }
     }
-    patronsToRemove.forEach {
+    /*patronsToRemove.forEach {
         uniquePatrons.remove(it)
         patronGold.remove(it)
-    }
+    }*/
 }
 
 private fun displayPatronBalances(){
