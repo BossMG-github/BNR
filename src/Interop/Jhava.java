@@ -5,6 +5,9 @@ import org.jetbrains.annotations.Nullable;
 
 // NyetHack이 아닌 다른 왕국의 괴물을 나타내는 클래스
 public class Jhava {
+
+    public int hitPoints = 52489112;
+
     @NotNull
     public String utterGreeting() {
         return "BLARGH";

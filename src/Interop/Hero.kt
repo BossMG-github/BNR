@@ -8,4 +8,8 @@ fun main() {
 
     val friendshipLevel = adversary.determineFriendshipLevel()
     println(friendshipLevel?.toLowerCase() ?: "무슨 의미인지 난해하군요.")
+
+    val adversaryHitPoints: Int = adversary.hitPoints
+    println(adversaryHitPoints.dec())
+    println(adversaryHitPoints.javaClass)
 }
