@@ -55,6 +55,17 @@ fun main() {
 
     val gradesByStudent = mapOf("Josh" to 4.0, "Alex" to 2.0, "Jane" to 3.0)
     println(flipValues(gradesByStudent))
+
+    val valuesToAdd = listOf(1,18,73,3,44,6,1,33,2,22,5,7)
+    val firstStep = valuesToAdd.filter { it >= 5 } // 1단계 5보다 작은 수는 제외
+    println(firstStep)
+    val secondStep = firstStep.windowed(2,2) // 인접한 두 개의 수를 한쌍으로 묶는다. 슬라이딩 윈도 알고리즘
+    println(secondStep)
+    val thirdStep = secondStep.map { it.first() * it.last() } // 각 쌍의 수를 곱한다.
+//    val thirdStep = secondStep.map {(a,b) -> a * b}
+    println(thirdStep)
+    val finalStep = thirdStep.sum() // 모든 수를 더해서 최종값을 산출한다.
+    println(finalStep)
 }
 
 fun flipValues(change: Map<String,Double>) = change.map { it.value to it.key}.toMap()
