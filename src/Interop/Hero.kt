@@ -1,6 +1,8 @@
 @file:JvmName("Hero")
 package Interop
 
+import java.io.IOException
+
 // NyetHack 왕국의 용사를 나타내는 파일
 
 fun main() {
@@ -18,6 +20,12 @@ fun main() {
     println(adversary.utterGreeting())
 
     adversary.offerFood()
+
+    try {
+        adversary.extendHandInFriendship()
+    } catch(e: Exception) {
+        println("잘가라, 못된 괴물아!")
+    }
 }
 
 fun makeProclamation() = "안녕, 괴물아!"
@@ -25,6 +33,11 @@ fun makeProclamation() = "안녕, 괴물아!"
 @JvmOverloads
 fun handOverFood(leftHand: String = "딸기", rightHand: String = "고기") {
     println("맛있는 $leftHand 와 $rightHand 를 넘겨주었습니다.")
+}
+
+@Throws(IOException::class)
+fun acceptApology() {
+    throw IOException()
 }
 
 class Spellbook {

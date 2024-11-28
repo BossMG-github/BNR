@@ -3,6 +3,8 @@ package Interop;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.IOException;
+
 // NyetHack이 아닌 다른 왕국의 괴물을 나타내는 클래스
 public class Jhava {
 
@@ -35,6 +37,18 @@ public class Jhava {
         Hero.handOverFood("피자");
     }
 
+    public void extendHandInFriendship() throws Exception {
+        throw new Exception();
+    }
+
+    public void apologize() {
+        try {
+            Hero.acceptApology();
+        } catch (IOException e) {
+            System.out.println("Caught!");
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println(Hero.makeProclamation());
 
@@ -47,4 +61,5 @@ public class Jhava {
 
         Spellbook.getSpellbookGreeting();
     }
+
 }
