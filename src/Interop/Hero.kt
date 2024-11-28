@@ -28,6 +28,10 @@ fun main() {
     }
 }
 
+val translator = { utterance: String ->
+    println(utterance.toLowerCase().capitalize())
+}
+
 fun makeProclamation() = "안녕, 괴물아!"
 
 @JvmOverloads
