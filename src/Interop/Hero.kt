@@ -26,3 +26,16 @@ fun makeProclamation() = "안녕, 괴물아!"
 fun handOverFood(leftHand: String = "딸기", rightHand: String = "고기") {
     println("맛있는 $leftHand 와 $rightHand 를 넘겨주었습니다.")
 }
+
+class Spellbook {
+    @JvmField
+    val spells = listOf("Magic Ms. L", "Lay on Hans")
+
+    companion object {
+        @JvmField
+        val MAX_SPELL_COUNT = 10
+
+        @JvmStatic
+        fun getSpellbookGreeting() = println("나는 위대한 그리모어다!")
+    }
+}
