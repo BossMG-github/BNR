@@ -1,7 +1,6 @@
 package NyetHack.com.bignerdranch.nyethack
 
 import NyetHack.com.bignerdranch.nyethack.extensions.frame
-import java.nio.file.Files.move
 import java.util.*
 import kotlin.system.exitProcess
 
@@ -10,17 +9,14 @@ fun main(args: Array<String>) {
     performCombat("ulrich")
     performCombat("Hildr", true)
     */
-
     Game.play()
 }
-
 
 /*private fun auraColor(
     isBlessed: Boolean,
     healthPoints: Int,
     isImmortal: Boolean
 ) = if (isBlessed && healthPoints > 50 || isImmortal) "GREEN" else "NONE"
-
 
 private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean) = when (healthPoints) {
     100 -> " 최상의 상태임!"
@@ -34,7 +30,6 @@ private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean) = when (he
     in 15..74 -> " 많이 다친 것 같음."
     else -> " 최악의 상태임!"
 }*/
-
 
 fun performCombat() {
     println("적군이 없다!")
